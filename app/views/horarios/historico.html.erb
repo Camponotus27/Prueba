@@ -23,12 +23,16 @@
 
     <% @horarios.each do |horario| %>
     <% if horario.disponibilidad == false%>
-    <% if current_user.nombre == horario.profesional%>
 
       <tr>
+        <% if horario.fecha  > Date.today.to_time%></td>
         <td><%= horario.profesional %></td>
         <td><%= horario.zona %></td>
         <td><%= horario.fecha %></td>
+
+
+
+
 
         <td><%= horario.direccion_de_atencion %></td>
 
@@ -46,29 +50,15 @@
                       <% end %>
 
 
-
-
-                <% end %>
-                <% end %>
-
-                <% if current_user.permiso == "administrador"%>
-                <tr>
-                  <td><%= horario.profesional %></td>
-                  <td><%= horario.zona %></td>
-                  <td><%= horario.fecha %></td>
-
-                  <td><%= horario.direccion_de_atencion %></td>
-
                   <% if current_user.permiso == "administrador"%>
                   <td><%= link_to 'Destroy', horario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   <td><%= link_to 'detalles', horario %></td>
-                  <% end %>
 
-                  </tr>
-  <% end %>
+                </tr>
 
                 <% end %>
-
+                <% end %>
+                <% end %>  <% end %>
 
   </tbody>
 
